@@ -54,8 +54,7 @@ public class test {
             SecretKeySpec secretKey = new SecretKeySpec(hashPw(masterPw), "AES");
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivSpec);
-            byte[] encryptedData = cipher.doFinal(data);
-            return encryptedData;
+            return cipher.doFinal(data);
         }
 
         public static byte[] decryptData(char[] masterPw, byte[] encryptedData) throws BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException, InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeySpecException, IOException {
